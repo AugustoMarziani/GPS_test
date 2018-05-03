@@ -14,7 +14,6 @@ import struct
 # setup as a station
 
 import gc
-
 time.sleep(2)
 gc.enable()
 
