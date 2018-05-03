@@ -1,0 +1,13 @@
+from network import WLAN
+wlan = WLAN(mode=WLAN.STA)
+# go for fixed IP settings (IP, Subnet, Gateway, DNS)
+wlan.ifconfig(config=('192.168.1.8', '255.255.255.0', '192.168.1.254', '192.168.1.254'))
+nets = wlan.scan()
+for net in nets:
+    if net.ssid == 'FASTWEB-1-5D26CB':
+        print('Network found!')
+        wlan.connect(net.ssid, auth=(net.sec, 'C70E71804C'), timeout=5000)
+        while not wlan.isconnected():
+            machine.idle() # save power while waiting
+        print('WLAN connection succeeded!')
+        break
